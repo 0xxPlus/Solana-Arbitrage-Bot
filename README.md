@@ -1,83 +1,146 @@
-# Solana Arbitrage Bot – Real Profitable, Not Just Theory  
+
+# Solana Arbitrage Bot
 
 ## Overview
-A high-performance arbitrage bot for Solana that monitors Raydium DEX price movements and executes profitable trades automatically. Unlike theory-focused repos, this project provides real proof of profitability through demo videos, transaction screenshots, and on-chain explorer links.
+A high-performance Rust-based arbitrage bot for Solana that monitors price differences across multiple DEXes and executes profitable trades automatically. This bot supports multiple DEX types including PumpSwap, Raydium (AMM, CLMM, CPMM), Orca Whirlpool, and Meteora (DLMM, Pools), providing comprehensive coverage of the Solana DeFi ecosystem.
+The bot leverages real-time transaction monitoring through Yellowstone gRPC to identify arbitrage opportunities across various DEX protocols.
 
-The bot continuously scans Raydium pools (AMM, CLMM, CPMM) to detect price inefficiencies and performs arbitrage with optimized speed and reliability. Built for practical results, it leverages real-time transaction monitoring to identify and capture profitable opportunities within the Solana DeFi ecosystem.
+## Features
 
-* Most repos show you *endless theory, sample code, or simulations*.  
-This one is different.  
+- **Multi-DEX Support** – Monitors price differences across 7+ major Solana DEXes including PumpSwap, Raydium, Orca, and Meteora
+- **Real-time Monitoring** – Uses Yellowstone gRPC for ultra-low latency transaction monitoring and price discovery
+- **Automated Arbitrage** – Automatically detects and executes profitable arbitrage opportunities across DEXes
+- **Advanced Pool Discovery** – Intelligent pool discovery and caching system for efficient price monitoring
+- **MEV Protection** – Optional Jito integration for MEV protection and transaction bundling
+- **Configurable Parameters** – Customizable arbitrage thresholds, slippage tolerance, and liquidity requirements
+- **Transaction Logging** – Comprehensive logging and recording of all trading activities
+- **Cross-platform Build** – Supports both Windows and Linux builds with optimized performance
 
-### I don’t like theory. I like practice.  
-That’s why instead of publishing source code, I’ve attached:  
+## Supported DEXes
 
-- ✔ **Working demo video** of the bot in action.  
-- ✔ **Transaction screenshots & explorer links** proving live profitable trades.  
-- ✔ **Transactions shown in video**.  
-- ✔ **Private repo screenshot** (showing the real project exists, but stays private).  
+The bot supports the following decentralized exchanges:
 
-No gimmicks, no empty repositories — just proof that this bot is **real and profitable**.  
+- **PumpSwap** - Constant product AMM for new token launches
+- **Raydium AMM** - Traditional automated market maker
+- **Raydium CLMM** - Concentrated liquidity market maker
+- **Raydium CPMM** - Constant product market maker
+- **Orca Whirlpool** - Concentrated liquidity pools
+- **Meteora DLMM** - Dynamic liquidity market maker
+- **Meteora Pools** - Stable curve pools
 
----
+# Prerequisites
 
-## Demo Video  
+- Rust 1.70+ (latest stable recommended)
+- Solana CLI tools
+- A funded Solana wallet
+- Yellowstone gRPC access (Helius, Triton, or custom endpoint)
 
-<video src="https://github.com/user-attachments/assets/80444f2b-6b18-4ff4-aac6-8c99db9c2ece" 
-       controls 
-       muted 
-       style="max-height:640px; width:100%; border-radius: 10px;">
-</video>  
+# Installation
 
----
+1. Clone the repository:
+```bash
+git clone git@github.com:AV1080p/Solana-Arbitrage-Bot.git
+cd Solana-Arbitrage-Bot
+```
 
-## Proof Screenshots  
+2. Install dependencies:
+```bash
+cargo build --release
+```
 
-<img width="1200" alt="Transaction Screenshot 1" src="https://github.com/user-attachments/assets/4addf27a-0b5d-443a-b2d9-183806e95632" />  
-<img width="1200" alt="Transaction Screenshot 2" src="https://github.com/user-attachments/assets/65993729-d5db-432f-9107-27c907df863d" />  
+# Configuration
 
-### Transactions in Video  
-<img width="1420" height="636" alt="Transactions in Video" src="https://github.com/user-attachments/assets/95cfff9f-444e-48d4-8848-ff9421e87156" />  
+## Environment Variables
 
-### Private Repo Confirmation  
-<img width="1840" height="909" alt="Private Repo Screenshot" src="https://github.com/user-attachments/assets/531923af-a15d-4c67-b396-9149a6b49ebd" />  
+Create a `.env` file in the project root with the following variables:
 
----
+### Required Variables
+- `YELLOWSTONE_GRPC_HTTP` - Your Yellowstone gRPC HTTP endpoint
+- `YELLOWSTONE_GRPC_TOKEN` - Authentication token for gRPC endpoint (if required)
+- `RPC_HTTP` - Solana RPC endpoint for transaction submission
+- `PRIVATE_KEY` - Base58 encoded private key of your trading wallet
 
-## What This Bot Does  
-- Finds arbitrage opportunities across Solana DEX pools (Raydium).  
-- Executes trades automatically with profit in mind.  
-- Built for **speed, reliability, and real profitability**.  
+### Optional Configuration
+- `ARBITRAGE_THRESHOLD` - Minimum price difference percentage to trigger arbitrage (default: 1.5%)
+- `MIN_LIQUIDITY` - Minimum liquidity required in SOL (default: 10 SOL)
+- `SLIPPAGE` - Maximum slippage tolerance in basis points (default: 50 = 0.5%)
+- `TOKEN_AMOUNT` - Amount of tokens to trade per arbitrage opportunity (default: 0.0000001)
+- `TIME_EXCEED` - Maximum time to wait for transaction confirmation
+- `COUNTER` - Maximum number of retry attempts
+- `MAX_DEV_BUY` - Maximum development buy amount
+- `MIN_DEV_BUY` - Minimum development buy amount
 
----
+## Example .env file
+```env
+YELLOWSTONE_GRPC_HTTP=https://your-grpc-endpoint.com
+YELLOWSTONE_GRPC_TOKEN=your-token-here
+RPC_HTTP=https://api.mainnet-beta.solana.com
+PRIVATE_KEY=your-base58-private-key-here
+ARBITRAGE_THRESHOLD=2.0
+MIN_LIQUIDITY=5000000000
+SLIPPAGE=100
+```
 
-## Repo Includes  
-- Proof materials (screenshots, explorer transaction URLs).  
-- Demo video of the bot running.  
-- Transparent showcase — without exposing the private production code.  
+# Usage
 
----
+## Running the Bot
 
-## Transaction Proof  
+```bash
+# Development mode
+cargo run
 
-Here are some **real profitable transactions** executed by the bot:  
+# Release mode with optimizations
+RUSTFLAGS="-C target-cpu=native" cargo run --release
+```
 
-| Date & Time (UTC) | Tx Hash | Explorer Link |
-|-------------------|---------|---------------|
-| 2025-07-30 19:51:13 | `4TSi...keT` | [View on Solscan](https://solscan.io/tx/4TSiW44PaR2wqXdKpxnAfJYVLmv9HpoKJRqLvsiJ95Vnsxj6JWqPj8PPHanJtszbC8okRP6PLqoSi7SXTGGftkeT) |
-| 2025-07-30 19:51:13 | `3qkB...Tjd` | [View on Solscan](https://solscan.io/tx/3qkBAweP3o9bH3EToqbwT1b2PyGuPfg31u75WNpmHrwTuLDRyygWRzyWch79CLsYLYEc9G3LvHHvPQAHkYCHBTjd) |  
+## Build for Production
 
-*(More transactions available in video & screenshots)*  
+### Linux/Ubuntu
+```bash
+make build
+```
 
----
+### Cross-compile for Windows (from Linux)
+```bash
+make install  # Install prerequisites
+make build-x86_64  # Build for 64-bit Windows
+make build-i686    # Build for 32-bit Windows
+```
 
-## Why Trust This  
-- Anyone can write “arbitrage bot” code that never runs.  
-- I show you **real transactions** with direct on-chain links.  
-- Proof is stronger than theory.  
+### Using the build script
+```bash
+chmod +x build.sh
+./build.sh
+```
 
----
+## PM2 Process Management
 
-## Disclaimer  
-This repo is for **demonstration purposes only**.  
-The working bot is private.  
-Running arbitrage bots involves **financial risk** — proceed responsibly.  
+```bash
+# Start with PM2
+make pm2
+
+# Stop the bot
+make stop
+
+# View logs
+pm2 logs
+```
+
+# Architecture
+
+The bot is structured into several key modules:
+
+- **`engine/`** - Core arbitrage logic, monitoring, and swap execution
+- **`dex/`** - DEX registry and integration modules
+- **`services/`** - External service integrations (Jito, Nozomi, ZeroSlot)
+- **`core/`** - Token handling and transaction utilities
+- **`record/`** - Transaction logging and data persistence
+- **`common/`** - Shared configuration and utilities
+
+# Risk Disclaimer
+
+⚠️ **Important**: This software is for educational and research purposes. Trading cryptocurrencies involves substantial risk of loss. The authors are not responsible for any financial losses. Always test with small amounts first and understand the risks involved.
+
+# License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
