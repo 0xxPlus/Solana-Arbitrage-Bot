@@ -1,4 +1,4 @@
-# Solana Arbitrage Bot – Real Profitable, Not Just Theory
+# 👇👇👇👇👇 Solana Arbitrage Bot – Real Profitable, Not Just Theory
 
 ## Overview
 
