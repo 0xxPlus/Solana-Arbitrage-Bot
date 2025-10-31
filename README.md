@@ -29,7 +29,7 @@ The bot scans Raydium AMM, CLMM, CPMM pools to detect price inefficiencies and p
 
 ### Demo Video
 
-<video src="https://github.com/user-attachments/assets/80444f2b-6b18-4ff4-aac6-8c99db9c2ece" 
+<video src="https://private-user-images.githubusercontent.com/15972808/508447997-167ad053-939d-46d6-81fa-70530cbc73d5.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE5NDY2MDMsIm5iZiI6MTc2MTk0NjMwMywicGF0aCI6Ii8xNTk3MjgwOC81MDg0NDc5OTctMTY3YWQwNTMtOTM5ZC00NmQ2LTgxZmEtNzA1MzBjYmM3M2Q1Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMzElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDMxVDIxMzE0M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ1ODJlY2YwOWQ5ODk3MmUxZDE2ZmFjMTY0NDJmNWNkNGI2MTYwNmUxNWU3YzkzMDJlYWI5YTZmZjk4NDQyNDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OTZddZOXx2fiWSCdOwLl7huhdhScASwyDNuMNWOybq4" 
     controls 
     muted 
     style="max-height:640px; width:100%; border-radius: 10px;"> </video>
